@@ -9,11 +9,9 @@ import kamila from '../assets/kamila.png'
 import {
   CalendarIcon,
   ClockIcon,
-  CloseIcon,
   HeartIcon,
   LashIcon,
   LipsIcon,
-  MenuIcon,
   FacebookIcon,
   InstagramIcon,
   TiktokIcon,
@@ -43,14 +41,14 @@ function Home() {
       <header className="header">
         <div className="header-inner">
 
-          <button
-            type="button"
-            className="mobile-menu-toggle"
-            aria-label="Otwórz menu"
-            onClick={() => setIsMenuOpen(true)}
-          >
-            <MenuIcon />
-          </button>
+        <button
+  type="button"
+  className="mobile-menu-toggle"
+  aria-label="Otwórz menu"
+  onClick={() => setIsMenuOpen(true)}
+>
+  ☰
+</button>
 
           <a className="brand" href="#home">
             <img src={logo} alt="Pink Beauty Med" />
@@ -92,13 +90,13 @@ function Home() {
             onClick={(event) => event.stopPropagation()}
           >
             <button
-              type="button"
-              className="mobile-nav-close"
-              aria-label="Zamknij menu"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <CloseIcon />
-            </button>
+  type="button"
+  className="mobile-nav-close"
+  aria-label="Zamknij menu"
+  onClick={() => setIsMenuOpen(false)}
+>
+  ×
+</button>
 
             {NAV_LINKS.map((link) => (
               <a
