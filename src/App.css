@@ -1181,4 +1181,71 @@ Wszystko jest już na grafice kamila.png.
 
 .footer-admin-link:hover {
   color: #ab9ba0;
+  /* =========================
+   NAPRAWA MENU MOBILNEGO
+========================= */
+
+@media (max-width: 650px) {
+  .mobile-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    z-index: 100;
+
+    width: 44px;
+    height: 44px;
+
+    padding: 8px;
+
+    border: 0;
+    background: transparent;
+
+    color: #504a4e;
+
+    cursor: pointer;
+  }
+
+  .mobile-menu-toggle svg {
+    width: 28px;
+    height: 28px;
+
+    display: block;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+  }
+
+  .mobile-nav-overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    background: rgba(60, 54, 58, 0.45);
+  }
+
+  .mobile-nav-panel {
+    width: min(300px, 82%);
+    height: 100%;
+
+    padding: 26px 28px;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #ffffff;
+
+    box-shadow: 20px 0 40px rgba(0, 0, 0, 0.15);
+  }
+}
 }
