@@ -1,0 +1,510 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap');
+
+.adm-page {
+  min-height: 100vh;
+
+  font-family: 'Montserrat', sans-serif;
+
+  color: #343034;
+
+  background:
+    radial-gradient(circle at 5% 10%, rgba(249, 213, 219, .28), transparent 24%),
+    radial-gradient(circle at 95% 15%, rgba(249, 220, 225, .22), transparent 25%),
+    linear-gradient(120deg, #fffefe, #fffafa);
+}
+
+.adm-page * {
+  box-sizing: border-box;
+}
+
+.adm-page button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.adm-page-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+
+/* HEADER (panel) */
+
+.adm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 22px min(60px, 6%);
+
+  background: rgba(255, 255, 255, .93);
+  border-bottom: 1px solid rgba(230, 190, 196, .32);
+}
+
+.adm-brand img {
+  height: 60px;
+  object-fit: contain;
+  display: block;
+}
+
+.adm-header-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.adm-user-email {
+  color: #877a7f;
+  font-size: 12.5px;
+}
+
+
+/* LOGIN CARD */
+
+.adm-login-card {
+  width: min(420px, 100%);
+  padding: 44px 38px;
+
+  text-align: center;
+
+  border-radius: 22px;
+  background: rgba(255, 255, 255, .96);
+  box-shadow: 0 13px 38px rgba(92, 61, 67, .12);
+}
+
+.adm-login-logo {
+  height: 56px;
+  margin: 0 auto 22px;
+  display: block;
+  object-fit: contain;
+}
+
+.adm-login-form {
+  margin-top: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.adm-login-submit {
+  width: 100%;
+  margin-top: 6px;
+}
+
+
+/* SHARED TYPOGRAPHY */
+
+.adm-eyebrow {
+  margin: 0;
+  color: #df768a;
+  font-size: 11px;
+  letter-spacing: 4px;
+}
+
+.adm-page h1 {
+  margin: 12px 0 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 500;
+  color: #3c363a;
+}
+
+.adm-info-text {
+  color: #877a7f;
+  font-size: 13px;
+}
+
+.adm-error {
+  margin: 0;
+  color: #d94f6a;
+  font-size: 12.5px;
+}
+
+
+/* FIELDS */
+
+.adm-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.adm-field span {
+  color: #504a4e;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.adm-field input {
+  padding: 13px 16px;
+
+  border: 1.5px solid #f0dee1;
+  border-radius: 10px;
+
+  font-family: inherit;
+  font-size: 13.5px;
+  color: #343034;
+
+  background: #fffdfd;
+}
+
+.adm-field input:focus {
+  outline: none;
+  border-color: #e8758c;
+}
+
+
+/* MAIN (panel) */
+
+.adm-main {
+  width: min(1100px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 44px 0 100px;
+}
+
+
+/* STATYSTYKI */
+
+.adm-stats-grid {
+  margin-top: 30px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+}
+
+.adm-stat-card {
+  padding: 20px;
+
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .95);
+  box-shadow: 0 10px 26px rgba(92, 61, 67, .08);
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.adm-stat-card-highlight {
+  background: linear-gradient(100deg, #ef8297, #e86d86);
+}
+
+.adm-stat-card-highlight .adm-stat-value,
+.adm-stat-card-highlight .adm-stat-label {
+  color: white;
+}
+
+.adm-stat-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  font-weight: 600;
+  color: #3c363a;
+}
+
+.adm-stat-label {
+  color: #877a7f;
+  font-size: 11px;
+  letter-spacing: .3px;
+}
+
+
+/* FILTRY */
+
+.adm-filters {
+  margin: 30px 0 20px;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.adm-filter-tab {
+  padding: 10px 20px;
+
+  border: 1px solid #ecc6cd;
+  border-radius: 30px;
+  background: white;
+  color: #9a8a8f;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  transition: .2s;
+}
+
+.adm-filter-tab.is-active {
+  border-color: #e8758c;
+  background: linear-gradient(100deg, #ef8297, #e86d86);
+  color: white;
+}
+
+
+/* LISTA REZERWACJI */
+
+.adm-booking-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.adm-booking-card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+
+  padding: 22px 26px;
+
+  border-radius: 16px;
+  background: rgba(255, 255, 255, .95);
+  box-shadow: 0 10px 26px rgba(92, 61, 67, .08);
+}
+
+.adm-booking-main {
+  flex: 1 1 320px;
+  min-width: 0;
+}
+
+.adm-booking-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.adm-booking-number {
+  color: #a89aa0;
+  font-size: 11px;
+  letter-spacing: .3px;
+}
+
+.adm-booking-service {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #3c363a;
+}
+
+.adm-booking-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  color: #877a7f;
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+
+.adm-booking-notes {
+  margin: 10px 0 0;
+  padding: 10px 12px;
+
+  border-radius: 8px;
+  background: #fdf6e8;
+  color: #93763a;
+
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.adm-booking-side {
+  flex: 0 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+}
+
+.adm-booking-price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.adm-booking-price span {
+  color: #877a7f;
+  font-size: 11px;
+}
+
+.adm-booking-price strong {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  color: #e8758c;
+}
+
+.adm-booking-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.adm-status-select {
+  padding: 9px 12px;
+
+  border: 1.5px solid #f0dee1;
+  border-radius: 8px;
+
+  font-family: inherit;
+  font-size: 12px;
+  color: #4a4448;
+
+  background: white;
+}
+
+
+/* STATUS BADGE */
+
+.adm-status-badge {
+  padding: 5px 12px;
+
+  border-radius: 20px;
+
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .3px;
+}
+
+.adm-status-confirmed {
+  background: #fdeef1;
+  color: #e8758c;
+}
+
+.adm-status-completed {
+  background: #e7f5ea;
+  color: #4a9560;
+}
+
+.adm-status-cancelled {
+  background: #f2f0f0;
+  color: #8a8285;
+}
+
+
+/* PRZYCISKI */
+
+.adm-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 12px 24px;
+
+  border: 0;
+  border-radius: 9px;
+
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: .3px;
+
+  text-decoration: none;
+
+  transition: .2s;
+}
+
+.adm-btn:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.adm-btn-primary {
+  color: white;
+  background: linear-gradient(100deg, #ef8297, #e86d86);
+  box-shadow: 0 14px 30px rgba(225, 102, 128, .22);
+}
+
+.adm-btn-primary:not(:disabled):hover {
+  transform: translateY(-2px);
+}
+
+.adm-btn-ghost {
+  color: #877a7f;
+  background: transparent;
+  border: 1.5px solid #e6c3ca;
+}
+
+.adm-btn-ghost:hover {
+  color: #4a4448;
+  background: #fff5f7;
+}
+
+.adm-btn-danger {
+  padding: 9px 16px;
+  color: #c0435c;
+  background: #fdeef1;
+}
+
+.adm-btn-danger:not(:disabled):hover {
+  background: #fbdde3;
+}
+
+
+/* RESPONSYWNOŚĆ */
+
+@media (max-width: 640px) {
+
+  .adm-header {
+    padding: 16px 20px;
+  }
+
+  .adm-brand img {
+    height: 46px;
+  }
+
+  .adm-user-email {
+    display: none;
+  }
+
+  .adm-booking-card {
+    flex-direction: column;
+  }
+
+  .adm-booking-side {
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .adm-booking-actions {
+    width: 100%;
+  }
+
+  .adm-status-select {
+    flex: 1;
+  }
+  /* =========================
+   STOPKA
+========================= */
+
+.site-footer {
+  padding: 26px 25px 34px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+
+  text-align: center;
+
+  color: #c9c0c3;
+
+  font-size: 10.5px;
+}
+
+.footer-admin-link {
+  color: #d8ccd0;
+
+  text-decoration: none;
+
+  transition: color .2s;
+}
+
+.footer-admin-link:hover {
+  color: #ab9ba0;
+}
+}
