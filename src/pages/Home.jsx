@@ -79,7 +79,12 @@ function Home() {
 
         .brand img {
           object-position: center;
-          transform: translateX(3cm);
+        }
+
+        @media (min-width: 651px) {
+          .brand img {
+            transform: translateX(3cm);
+          }
         }
 
         .floating-socials button {
