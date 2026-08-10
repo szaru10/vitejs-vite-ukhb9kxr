@@ -957,9 +957,20 @@ Wszystko jest już na grafice kamila.png.
     width:
       calc(100% - 25px);
 
+    position: relative;
+
     display: flex;
 
     justify-content: center;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   .brand {
@@ -1056,4 +1067,118 @@ Wszystko jest już na grafice kamila.png.
   .booking h2 {
     font-size: 45px;
   }
+}
+
+
+/* MENU MOBILNE */
+
+.mobile-menu-toggle {
+  display: none;
+
+  border: 0;
+  background: transparent;
+  color: #504a4e;
+
+  padding: 8px;
+}
+
+.mobile-menu-toggle svg {
+  width: 26px;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.mobile-nav-overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 50;
+
+  display: flex;
+
+  background: rgba(60, 54, 58, .45);
+}
+
+.mobile-nav-panel {
+  width: min(300px, 80%);
+  height: 100%;
+
+  padding: 26px 28px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  background: white;
+  box-shadow: 20px 0 40px rgba(0, 0, 0, .15);
+}
+
+.mobile-nav-close {
+  align-self: flex-end;
+  margin-bottom: 20px;
+
+  border: 0;
+  background: transparent;
+  color: #877a7f;
+  padding: 6px;
+}
+
+.mobile-nav-close svg {
+  width: 22px;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.mobile-nav-panel a {
+  padding: 14px 4px;
+
+  border-bottom: 1px solid rgba(230, 190, 196, .32);
+
+  color: #504a4e;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .4px;
+}
+
+.mobile-nav-panel a:last-child {
+  border-bottom: none;
+}
+
+
+/* =========================
+   STOPKA
+========================= */
+
+.site-footer {
+  padding: 26px 25px 34px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+
+  text-align: center;
+
+  color: #c9c0c3;
+
+  font-size: 10.5px;
+}
+
+.footer-admin-link {
+  color: #d8ccd0;
+
+  text-decoration: none;
+
+  transition: color .2s;
+}
+
+.footer-admin-link:hover {
+  color: #ab9ba0;
 }

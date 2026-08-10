@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import '../App.css'
@@ -5,63 +6,70 @@ import '../App.css'
 import logo from '../assets/logo.png'
 import kamila from '../assets/kamila.png'
 
-
 import {
   CalendarIcon,
   ClockIcon,
+  CloseIcon,
   HeartIcon,
   LashIcon,
   LipsIcon,
+  MenuIcon,
   FacebookIcon,
   InstagramIcon,
   TiktokIcon,
 } from '../components/Icons.jsx'
 
+const NAV_LINKS = [
+  { href: '#home', label: 'STRONA GŁÓWNA' },
+  { href: '#about', label: 'O MNIE' },
+  { href: '#offer', label: 'OFERTA' },
+  { href: '#price', label: 'CENNIK' },
+  { href: '#faq', label: 'FAQ' },
+  { href: '#contact', label: 'KONTAKT' },
+]
+
 function Home() {
   const navigate = useNavigate()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const goToBooking = () => {
     navigate('/rezerwacja')
   }
 
   return (
-    <div className="site">
+    <div>
 
       {/* HEADER */}
       <header className="header">
         <div className="header-inner">
+
+          <button
+            type="button"
+            className="mobile-menu-toggle"
+            aria-label="Otwórz menu"
+            onClick={() => setIsMenuOpen(true)}
+          >
+            <MenuIcon />
+          </button>
 
           <a className="brand" href="#home">
             <img src={logo} alt="Pink Beauty Med" />
           </a>
 
           <nav className="nav">
-            <a className="active" href="#home">
-              STRONA GŁÓWNA
-            </a>
-
-            <a href="#about">
-              O MNIE
-            </a>
-
-            <a href="#offer">
-              OFERTA
-            </a>
-
-            <a href="#price">
-              CENNIK
-            </a>
-
-            <a href="#faq">
-              FAQ
-            </a>
-
-            <a href="#contact">
-              KONTAKT
-            </a>
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.href}
+                className={link.href === '#home' ? 'active' : undefined}
+                href={link.href}
+              >
+                {link.label}
+              </a>
+            ))}
           </nav>
 
           <button
+            type="button"
             className="header-book"
             onClick={goToBooking}
           >
@@ -71,6 +79,41 @@ function Home() {
 
         </div>
       </header>
+
+
+      {/* MOBILNE MENU */}
+      {isMenuOpen && (
+        <div
+          className="mobile-nav-overlay"
+          onClick={() => setIsMenuOpen(false)}
+        >
+          <div
+            className="mobile-nav-panel"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="mobile-nav-close"
+              aria-label="Zamknij menu"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <CloseIcon />
+            </button>
+
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {link.label}
+              </a>
+            ))}
+
+          </div>
+        </div>
+      )}
+
 
       <style>{`
         .brand {
@@ -108,13 +151,9 @@ function Home() {
           <section className="hero-content">
 
             <div className="hero-decoration">
-
               <span />
-
               <HeartIcon />
-
               <span />
-
             </div>
 
             <h1>
@@ -130,9 +169,11 @@ function Home() {
               w kilka chwil — szybko, wygodnie i bez telefonu.
             </p>
 
+
             <div className="hero-buttons">
 
               <button
+                type="button"
                 className="primary-button"
                 onClick={goToBooking}
               >
@@ -141,6 +182,7 @@ function Home() {
               </button>
 
               <button
+                type="button"
                 className="secondary-button"
                 onClick={goToBooking}
               >
@@ -331,38 +373,20 @@ function Home() {
       </section>
 
 
-      {/* REZERWACJA */}
-      <section className="booking" id="booking">
-
-        <p className="section-label">
-          REZERWACJA ONLINE
-        </p>
-
-        <h2>
-          Umów swoją wizytę
-        </h2>
-
-        <p className="booking-description">
-          Wybierz usługę, dogodny dzień i godzinę, a na koniec
-          zarezerwuj termin wpłacając zadatek 50 zł.
-        </p>
-
-        <button
-          className="booking-button"
-          type="button"
-          onClick={goToBooking}
-        >
-          ROZPOCZNIJ REZERWACJĘ
-        </button>
-
-      </section>
-
       {/* STOPKA */}
       <footer className="site-footer">
-        <p>© {new Date().getFullYear()} Pink Beauty Med. Wszelkie prawa zastrzeżone.</p>
-        <Link to="/panel/logowanie" className="footer-admin-link">
+
+        <p>
+          © {new Date().getFullYear()} Pink Beauty Med. Wszelkie prawa zastrzeżone.
+        </p>
+
+        <Link
+          to="/panel/logowanie"
+          className="footer-admin-link"
+        >
           Panel administracyjny
         </Link>
+
       </footer>
 
     </div>
