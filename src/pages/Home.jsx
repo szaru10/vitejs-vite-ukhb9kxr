@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import '../App.css'
@@ -8,6 +8,9 @@ import kamila from '../assets/kamila.png'
 import kamilaAbout from '../assets/kamila-about.png'
 import lashIcon from '../assets/lash-icon.jpg'
 import lipsIcon from '../assets/lips-icon.jpg'
+import phoneIconImg from '../assets/phone-icon.png'
+import messengerIconImg from '../assets/messenger-icon.png'
+import facebookIconImg from '../assets/facebook-icon.png'
 
 import {
   LASH_STYLES,
@@ -17,6 +20,8 @@ import {
   HYALURONIDASE_TREATMENTS,
 } from '../data/services.js'
 
+import { getDayInfo, getTimeSlots, MONTH_NAMES_NOMINATIVE } from '../data/availability.js'
+
 import {
   CalendarIcon,
   ClockIcon,
@@ -24,8 +29,9 @@ import {
   FacebookIcon,
   InstagramIcon,
   TiktokIcon,
-  MessengerIcon,
-  PhoneIcon,
+  CloseIcon,
+  ArrowRightIcon,
+  ArrowLeftIcon,
 } from '../components/Icons.jsx'
 
 const NAV_LINKS = [
@@ -72,12 +78,82 @@ const OFFER_CARDS = [
   },
 ]
 
+const PREVIEW_SLOT_DURATION = 60
+const MAX_MONTHS_AHEAD = 6
+const WEEKDAY_HEADERS = ['Pon', 'Wt', 'Śr', 'Czw', 'Pt', 'Sob', 'Nd']
+
+function startOfMonth(date) {
+  return new Date(date.getFullYear(), date.getMonth(), 1)
+}
+
+function startOfToday() {
+  const date = new Date()
+  date.setHours(0, 0, 0, 0)
+  return date
+}
+
 function Home() {
   const navigate = useNavigate()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isAvailabilityOpen, setIsAvailabilityOpen] = useState(false)
+  const [viewedMonth, setViewedMonth] = useState(() => startOfMonth(new Date()))
+  const [selectedDay, setSelectedDay] = useState(null)
+
+  const todayStart = useMemo(() => startOfToday(), [])
+  const currentMonthStart = useMemo(() => startOfMonth(new Date()), [])
+
+  const isPrevMonthDisabled =
+    viewedMonth.getFullYear() === currentMonthStart.getFullYear() &&
+    viewedMonth.getMonth() === currentMonthStart.getMonth()
+
+  const isNextMonthDisabled =
+    (viewedMonth.getFullYear() - currentMonthStart.getFullYear()) * 12 +
+      (viewedMonth.getMonth() - currentMonthStart.getMonth()) >=
+    MAX_MONTHS_AHEAD
+
+  const goPrevMonth = () => {
+    if (isPrevMonthDisabled) return
+    setViewedMonth((prev) => new Date(prev.getFullYear(), prev.getMonth() - 1, 1))
+  }
+
+  const goNextMonth = () => {
+    if (isNextMonthDisabled) return
+    setViewedMonth((prev) => new Date(prev.getFullYear(), prev.getMonth() + 1, 1))
+  }
+
+  const calendarCells = useMemo(() => {
+    const year = viewedMonth.getFullYear()
+    const month = viewedMonth.getMonth()
+    const daysInMonth = new Date(year, month + 1, 0).getDate()
+    const mondayIndex = (new Date(year, month, 1).getDay() + 6) % 7
+
+    const cells = []
+    for (let i = 0; i < mondayIndex; i++) cells.push(null)
+    for (let dayNum = 1; dayNum <= daysInMonth; dayNum++) {
+      const date = new Date(year, month, dayNum)
+      cells.push({ ...getDayInfo(date), isPast: date < todayStart })
+    }
+    return cells
+  }, [viewedMonth, todayStart])
+
+  const modalTimeSlots = useMemo(() => {
+    if (!selectedDay) return []
+    return getTimeSlots(selectedDay.isoDate, PREVIEW_SLOT_DURATION)
+  }, [selectedDay])
 
   const goToBooking = () => {
     navigate('/rezerwacja')
+  }
+
+  const closeAvailabilityModal = () => {
+    setIsAvailabilityOpen(false)
+    setSelectedDay(null)
+    setViewedMonth(startOfMonth(new Date()))
+  }
+
+  const goToBookingWithDate = (isoDate, time) => {
+    closeAvailabilityModal()
+    navigate('/rezerwacja', { state: { presetDate: isoDate, presetTime: time } })
   }
 
   return (
@@ -150,6 +226,134 @@ function Home() {
       )}
 
 
+      {/* MODAL — SPRAWDŹ TERMINY */}
+      {isAvailabilityOpen && (
+        <div
+          className="availability-overlay"
+          onClick={closeAvailabilityModal}
+        >
+          <div
+            className="availability-modal"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="availability-modal-close"
+              aria-label="Zamknij"
+              onClick={closeAvailabilityModal}
+            >
+              <CloseIcon />
+            </button>
+
+            {!selectedDay ? (
+              <>
+                <p className="section-label">TERMINARZ</p>
+                <h3>Sprawdź wolne terminy</h3>
+                <p className="availability-modal-subtitle">
+                  Wybierz dzień, aby sprawdzić dostępne godziny.
+                </p>
+
+                <div className="calendar-nav">
+                  <button
+                    type="button"
+                    className="calendar-nav-arrow"
+                    aria-label="Poprzedni miesiąc"
+                    disabled={isPrevMonthDisabled}
+                    onClick={goPrevMonth}
+                  >
+                    <ArrowLeftIcon />
+                  </button>
+
+                  <span className="calendar-nav-label">
+                    {MONTH_NAMES_NOMINATIVE[viewedMonth.getMonth()]} {viewedMonth.getFullYear()}
+                  </span>
+
+                  <button
+                    type="button"
+                    className="calendar-nav-arrow"
+                    aria-label="Następny miesiąc"
+                    disabled={isNextMonthDisabled}
+                    onClick={goNextMonth}
+                  >
+                    <ArrowRightIcon />
+                  </button>
+                </div>
+
+                <div className="calendar-weekdays">
+                  {WEEKDAY_HEADERS.map((label) => (
+                    <span key={label}>{label}</span>
+                  ))}
+                </div>
+
+                <div className="calendar-grid">
+                  {calendarCells.map((cell, index) => {
+                    if (!cell) {
+                      return <span key={`empty-${index}`} className="calendar-cell calendar-cell--empty" />
+                    }
+
+                    const isDisabled = cell.isClosed || !cell.hasFreeSlots || cell.isPast
+
+                    return (
+                      <button
+                        key={cell.isoDate}
+                        type="button"
+                        disabled={isDisabled}
+                        className={`calendar-cell ${
+                          isDisabled ? 'is-unavailable' : 'is-available'
+                        }`}
+                        onClick={() => setSelectedDay(cell)}
+                      >
+                        {cell.dayNumber}
+                      </button>
+                    )
+                  })}
+                </div>
+
+                <div className="calendar-legend">
+                  <span><i className="is-available" /> Wolne terminy</span>
+                  <span><i className="is-unavailable" /> Brak miejsc / zamknięte</span>
+                </div>
+              </>
+            ) : (
+              <>
+                <button
+                  type="button"
+                  className="availability-back"
+                  onClick={() => setSelectedDay(null)}
+                >
+                  <ArrowLeftIcon /> Wróć do kalendarza
+                </button>
+
+                <p className="section-label">DOSTĘPNE GODZINY</p>
+                <h3>
+                  {selectedDay.dayName} {selectedDay.dayNumber} {selectedDay.monthName}
+                </h3>
+                <p className="availability-modal-subtitle">
+                  Podgląd orientacyjny — dokładna dostępność zależy od
+                  wybranej usługi. Kliknij godzinę, aby przejść do rezerwacji.
+                </p>
+
+                <div className="availability-time-grid">
+                  {modalTimeSlots.map((slot) => (
+                    <button
+                      key={slot.time}
+                      type="button"
+                      disabled={!slot.available}
+                      className="availability-time"
+                      onClick={() => goToBookingWithDate(selectedDay.isoDate, slot.time)}
+                    >
+                      {slot.time}
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
+
+          </div>
+        </div>
+      )}
+
+
       <style>{`
         .brand {
           justify-content: center;
@@ -201,7 +405,7 @@ function Home() {
             <p className="hero-description">
               Profesjonalna stylizacja rzęs i modelowanie ust
               w kameralnym gabinecie. Umów wizytę online
-              w kilka chwil — szybko, wygodnie i bez telefonu.
+              w kilka chwil — szybko i wygodnie.
             </p>
 
 
@@ -219,7 +423,7 @@ function Home() {
               <button
                 type="button"
                 className="secondary-button"
-                onClick={goToBooking}
+                onClick={() => setIsAvailabilityOpen(true)}
               >
                 <ClockIcon />
                 SPRAWDŹ TERMINY
@@ -653,7 +857,7 @@ function Home() {
           <div className="contact-box-links">
 
             <a href="tel:791805599" className="contact-box-link">
-              <PhoneIcon />
+              <img src={phoneIconImg} alt="" />
               <span>
                 <strong>Telefon</strong>
                 <em>791 805 599</em>
@@ -661,12 +865,12 @@ function Home() {
             </a>
 
             <a
-              href="https://m.me/PinkBeautyMed"
+              href="https://m.me/100063579820348"
               target="_blank"
               rel="noopener noreferrer"
               className="contact-box-link"
             >
-              <MessengerIcon />
+              <img src={messengerIconImg} alt="" />
               <span>
                 <strong>Messenger</strong>
                 <em>Napisz bezpośrednio</em>
@@ -679,7 +883,7 @@ function Home() {
               rel="noopener noreferrer"
               className="contact-box-link"
             >
-              <FacebookIcon />
+              <img src={facebookIconImg} alt="" />
               <span>
                 <strong>Facebook</strong>
                 <em>Strona i profil prywatny</em>

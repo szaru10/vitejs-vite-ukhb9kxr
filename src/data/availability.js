@@ -8,6 +8,13 @@ const MONTH_NAMES = [
   'lipca', 'sierpnia', 'września', 'października', 'listopada', 'grudnia',
 ]
 
+// Mianownik — do nagłówków kalendarza ("Styczeń 2026"), w odróżnieniu
+// od dopełniacza w MONTH_NAMES używanego przy pojedynczej dacie ("3 stycznia").
+export const MONTH_NAMES_NOMINATIVE = [
+  'Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec',
+  'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień',
+]
+
 const WORK_START_MINUTES = 9 * 60
 const WORK_END_MINUTES = 18 * 60
 
@@ -29,6 +36,26 @@ function seedFromString(str) {
 }
 
 /**
+ * Zwraca informację o dostępności dla pojedynczego dnia (używane
+ * przy budowaniu siatki pełnego kalendarza miesięcznego).
+ */
+export function getDayInfo(date) {
+  const isSunday = date.getDay() === 0
+  const isoDate = toIsoDate(date)
+  const seed = seedFromString(isoDate)
+
+  return {
+    isoDate,
+    dayName: DAY_NAMES[date.getDay()],
+    dayNumber: date.getDate(),
+    monthName: MONTH_NAMES[date.getMonth()],
+    isClosed: isSunday,
+    // ok. 1 na 6 dni roboczych wygląda na w pełni zajęty
+    hasFreeSlots: !isSunday && seed % 6 !== 0,
+  }
+}
+
+/**
  * Zwraca listę kolejnych dni roboczych (salon zamknięty w niedziele) wraz
  * z informacją, czy danego dnia są jeszcze wolne miejsca.
  */
@@ -38,20 +65,7 @@ export function getAvailableDays(count = 21, startDate = new Date()) {
   cursor.setHours(0, 0, 0, 0)
 
   while (days.length < count) {
-    const isSunday = cursor.getDay() === 0
-    const isoDate = toIsoDate(cursor)
-    const seed = seedFromString(isoDate)
-
-    days.push({
-      isoDate,
-      dayName: DAY_NAMES[cursor.getDay()],
-      dayNumber: cursor.getDate(),
-      monthName: MONTH_NAMES[cursor.getMonth()],
-      isClosed: isSunday,
-      // ok. 1 na 6 dni roboczych wygląda na w pełni zajęty
-      hasFreeSlots: !isSunday && seed % 6 !== 0,
-    })
-
+    days.push(getDayInfo(cursor))
     cursor.setDate(cursor.getDate() + 1)
   }
 

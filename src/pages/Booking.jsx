@@ -1,5 +1,5 @@
-import { useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useMemo, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
 import './Booking.css'
 
@@ -58,6 +58,7 @@ function formatDuration(minutes) {
 }
 
 function Booking() {
+  const location = useLocation()
   const [step, setStep] = useState(1)
   const [activeCategory, setActiveCategory] = useState(SERVICE_CATEGORIES[0].id)
   const [selectedServiceId, setSelectedServiceId] = useState(null)
@@ -75,10 +76,39 @@ function Booking() {
 
   const days = useMemo(() => getAvailableDays(21), [])
 
+  // Jeśli przyszliśmy tu z modala "Sprawdź terminy" na stronie głównej,
+  // z góry ustawiamy wybrany dzień (o ile wciąż ma wolne miejsca) oraz
+  // zapamiętujemy życzoną godzinę, żeby spróbować ją ustawić po wybraniu usługi.
+  const [presetTime] = useState(() => location.state?.presetTime ?? null)
+  const [presetTimeApplied, setPresetTimeApplied] = useState(false)
+
+  useEffect(() => {
+    const presetDate = location.state?.presetDate
+    if (!presetDate) return
+    const matchingDay = days.find((day) => day.isoDate === presetDate)
+    if (matchingDay && !matchingDay.isClosed && matchingDay.hasFreeSlots) {
+      setSelectedDate(presetDate)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   const timeSlots = useMemo(() => {
     if (!selectedDate || !selectedService) return []
     return getTimeSlots(selectedDate, selectedService.durationMinutes)
   }, [selectedDate, selectedService])
+
+  // Gdy po wybraniu usługi znane są już godziny dla wybranego dnia,
+  // spróbuj ustawić godzinę zasugerowaną w modalu "Sprawdź terminy"
+  // (o ile wciąż jest dostępna przy tej konkretnej usłudze).
+  useEffect(() => {
+    if (!presetTime || presetTimeApplied || selectedTime) return
+    if (timeSlots.length === 0) return
+    const matchingSlot = timeSlots.find((slot) => slot.time === presetTime)
+    if (matchingSlot && matchingSlot.available) {
+      setSelectedTime(presetTime)
+    }
+    setPresetTimeApplied(true)
+  }, [timeSlots, presetTime, presetTimeApplied, selectedTime])
 
   const selectedDay = useMemo(
     () => days.find((day) => day.isoDate === selectedDate) ?? null,
@@ -252,6 +282,14 @@ function Booking() {
           {step === 1 && (
             <section>
               <h2 className="rez-step-title">Wybierz usługę</h2>
+
+              {selectedDate && (
+                <p className="rez-step-subtitle">
+                  Wybrany dzień: <strong>{selectedDay?.dayName} {selectedDay?.dayNumber} {selectedDay?.monthName}</strong>
+                  {presetTime && <> około godz. <strong>{presetTime}</strong></>}
+                  {' '}— wybierz usługę, aby zobaczyć wolne godziny.
+                </p>
+              )}
 
               <div className="rez-category-tabs">
                 {SERVICE_CATEGORIES.map((category) => (
