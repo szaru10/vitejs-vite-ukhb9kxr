@@ -26,18 +26,18 @@ export function HeartIcon() {
 
 export function LashIcon() {
   return (
-    <svg viewBox="0 0 60 28" aria-hidden="true">
-      <path d="M4 16c9 7 20 9 29 8 9-.8 17-4 23-10" />
-      <path d="M10 18 7 8M16 21 15 9M22 23 23 10M29 24 31 11M36 23 40 10M43 21 49 9M49 18 57 8" />
+    <svg viewBox="0 0 60 30" aria-hidden="true">
+      <path d="M3 15c8 8 19 11 27 11s19-3 27-11" strokeLinecap="round" />
+      <path d="M11 18 8 9M18 21 16 11M25 23 25 12M35 23 35 12M42 21 44 11M49 18 52 9" strokeLinecap="round" />
     </svg>
   )
 }
 
 export function LipsIcon() {
   return (
-    <svg viewBox="0 0 60 34" aria-hidden="true">
-      <path d="M4 18c8-3 14-10 23-11l3 3 3-3c9 1 15 8 23 11-8 7-16 10-26 10S12 25 4 18Z" />
-      <path d="M4 18h52" />
+    <svg viewBox="0 0 60 32" aria-hidden="true">
+      <path d="M4 14c6-5 13-9 21-9 2.6 0 3.8 1.8 5 1.8S32.4 5 35 5c8 0 15 4 21 9-2 1.6-4 2.7-4 2.7C55.6 19 51 25 30 25S4.4 19 8 16.7c0 0-2-1.1-4-2.7Z" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M4 14c5.5 2.6 12 3.7 17 1.4M56 14c-5.5 2.6-12 3.7-17 1.4" strokeLinecap="round" />
     </svg>
   )
 }

@@ -5,13 +5,13 @@ import '../App.css'
 
 import logo from '../assets/logo.png'
 import kamila from '../assets/kamila.png'
+import lashIcon from '../assets/lash-icon.jpg'
+import lipsIcon from '../assets/lips-icon.jpg'
 
 import {
   CalendarIcon,
   ClockIcon,
   HeartIcon,
-  LashIcon,
-  LipsIcon,
   FacebookIcon,
   InstagramIcon,
   TiktokIcon,
@@ -128,13 +128,13 @@ function Home() {
           }
         }
 
-        .floating-socials button {
+        .floating-socials a {
           display: flex;
           align-items: center;
           justify-content: center;
         }
 
-        .floating-socials button svg {
+        .floating-socials a svg {
           width: 20px;
         }
       `}</style>
@@ -194,36 +194,30 @@ function Home() {
             {/* USŁUGI */}
             <div className="mini-services" id="offer">
 
-              <div className="service-badge">
+              <div className="service-card service-card--lash">
 
-                <div className="service-badge-ring">
-                  <div className="service-badge-circle">
-                    <LashIcon />
-                  </div>
+                <div className="service-card-icon">
+                  <img src={lashIcon} alt="Stylizacja rzęs" />
                 </div>
 
-                <span className="service-badge-label">
-                  STYLIZACJA
-                  <br />
-                  RZĘS
-                </span>
+                <div className="service-card-text">
+                  <strong>Stylizacja rzęs</strong>
+                  <span>Piękne spojrzenie na dłużej</span>
+                </div>
 
               </div>
 
 
-              <div className="service-badge">
+              <div className="service-card service-card--lips">
 
-                <div className="service-badge-ring">
-                  <div className="service-badge-circle">
-                    <LipsIcon />
-                  </div>
+                <div className="service-card-icon">
+                  <img src={lipsIcon} alt="Modelowanie ust" />
                 </div>
 
-                <span className="service-badge-label">
-                  MODELOWANIE
-                  <br />
-                  UST
-                </span>
+                <div className="service-card-text">
+                  <strong>Modelowanie ust</strong>
+                  <span>Pełne, zmysłowe usta</span>
+                </div>
 
               </div>
 
@@ -243,26 +237,32 @@ function Home() {
 
             <div className="floating-socials">
 
-              <button
-                type="button"
+              <a
+                href="https://www.facebook.com/profile.php?id=100063579820348"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Facebook"
               >
                 <FacebookIcon />
-              </button>
+              </a>
 
-              <button
-                type="button"
+              <a
+                href="https://www.instagram.com/stylizacjarzeskamila_m"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Instagram"
               >
                 <InstagramIcon />
-              </button>
+              </a>
 
-              <button
-                type="button"
+              <a
+                href="https://www.tiktok.com/@stylizacjarzeskm?is_from_webapp=1&sender_device=pc"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="TikTok"
               >
                 <TiktokIcon />
-              </button>
+              </a>
 
             </div>
 
