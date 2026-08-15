@@ -5,6 +5,7 @@ import '../App.css'
 
 import logo from '../assets/logo.png'
 import kamila from '../assets/kamila.png'
+import kamilaAbout from '../assets/kamila-about.png'
 import lashIcon from '../assets/lash-icon.jpg'
 import lipsIcon from '../assets/lips-icon.jpg'
 
@@ -15,6 +16,8 @@ import {
   FacebookIcon,
   InstagramIcon,
   TiktokIcon,
+  MessengerIcon,
+  PhoneIcon,
 } from '../components/Icons.jsx'
 
 const NAV_LINKS = [
@@ -271,6 +274,127 @@ function Home() {
         </div>
 
       </main>
+
+
+      {/* O MNIE */}
+      <section className="about" id="about">
+
+        <div className="about-inner">
+
+          <div className="about-visual">
+            <img
+              className="about-photo"
+              src={kamilaAbout}
+              alt="Kamila Tomczyk"
+            />
+          </div>
+
+          <div className="about-content">
+
+            <div className="hero-decoration">
+              <span />
+              <HeartIcon />
+              <span />
+            </div>
+
+            <p className="section-label">POZNAJMY SIĘ</p>
+
+            <h2>
+              Cześć, jestem
+              <strong>Kamila</strong>
+            </h2>
+
+            <p className="about-text">
+              Stylizacją rzęs zajmuję się od 2017 roku — to już ponad 9 lat
+              mojej największej zawodowej pasji. Przez te wszystkie lata
+              stała się nie tylko moją pracą, ale częścią mnie. Najbardziej
+              odnajduję się w mocnych stylizacjach objętościowych — kocham
+              gęstość, idealną linię i dopracowany każdy szczegół.
+            </p>
+
+            <p className="about-text">
+              Cały czas się szkolę i szukam nowych możliwości. Kocham
+              klasyczną, równą linię, ale jeśli lubisz Efekt Kim, Wispy
+              czy inne nietuzinkowe stylizacje — chętnie pokombinuję
+              i stworzę coś wyjątkowego właśnie dla Ciebie. Nie boję się
+              też odrobiny szaleństwa w pracy z kolorem, kiedy stylizacja
+              ma mieć charakter.
+            </p>
+
+            <p className="about-text">
+              Dla kobiet w biegu polecam Express Set — piękne podkreślenie
+              spojrzenia w zaledwie 60 minut. Zajmuję się również
+              powiększaniem i modelowaniem ust, stale poszerzając swoją
+              wiedzę w tym kierunku.
+            </p>
+
+            <p className="about-text about-text--signature">
+              Wierzę, że wizyta u stylistki to nie tylko piękne rzęsy
+              czy usta, ale też czas dla siebie, rozmowa i dobra
+              atmosfera. Uwielbiam moje klientki i swoją pracę —
+              i naprawdę nie zamieniłabym jej na żadną inną.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        {/* KONTAKT */}
+        <div className="about-contact">
+
+          <p className="section-label">KONTAKT</p>
+
+          <h3>Masz pytanie? Napisz lub zadzwoń</h3>
+
+          <p className="about-contact-description">
+            Nie wiesz, jaki efekt wybrać, czy chcesz umówić wizytę na
+            stylizację rzęs, korektę, powiększanie i modelowanie ust,
+            hialuronidazę lub inną dostępną usługę — chętnie odpowiem
+            i dobiorę rozwiązanie do Twoich oczekiwań.
+          </p>
+
+          <div className="about-contact-links">
+
+            <a href="tel:791805599" className="about-contact-link">
+              <PhoneIcon />
+              <span>
+                <strong>Telefon</strong>
+                <em>791 805 599</em>
+              </span>
+            </a>
+
+            <a
+              href="https://m.me/PinkBeautyMed"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="about-contact-link"
+            >
+              <MessengerIcon />
+              <span>
+                <strong>Messenger</strong>
+                <em>Napisz bezpośrednio</em>
+              </span>
+            </a>
+
+            <a
+              href="https://www.facebook.com/profile.php?id=100063579820348"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="about-contact-link"
+            >
+              <FacebookIcon />
+              <span>
+                <strong>Facebook</strong>
+                <em>Strona i profil prywatny</em>
+              </span>
+            </a>
+
+          </div>
+
+        </div>
+
+      </section>
 
 
       {/* DOLNY PASEK */}

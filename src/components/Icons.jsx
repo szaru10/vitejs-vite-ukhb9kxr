@@ -100,6 +100,15 @@ export function TiktokIcon() {
   )
 }
 
+export function MessengerIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 2C6.5 2 2 6.1 2 11.2c0 2.9 1.4 5.5 3.7 7.2V22l3.4-1.9c.9.2 1.9.4 2.9.4 5.5 0 10-4.1 10-9.3S17.5 2 12 2Z" />
+      <path d="M6.6 13.4 10 9.8l3 2.4 3.4-3.6-4.5 4.6-3-2.4-2.3 2.6Z" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+
 export function CheckIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">

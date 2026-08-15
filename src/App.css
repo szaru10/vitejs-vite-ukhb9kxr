@@ -843,6 +843,262 @@ button {
 
 
 /* =========================
+   O MNIE
+========================= */
+
+.about {
+  position: relative;
+
+  z-index: 2;
+
+  padding: 100px 0 80px;
+}
+
+.about-inner {
+  width:
+    min(
+      1400px,
+      calc(100% - 60px)
+    );
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(320px, 440px) 1fr;
+
+  align-items: center;
+
+  gap: 60px;
+}
+
+
+/* ZDJĘCIE */
+
+.about-visual {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.about-photo {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  border-radius: 18px;
+
+  object-fit: cover;
+
+  display: block;
+
+  box-shadow:
+    0 25px 45px
+    rgba(91, 60, 65, .18);
+}
+
+
+/* TEKST */
+
+.about-content .section-label {
+  margin-top: 20px;
+}
+
+.about-content h2 {
+  margin:
+    14px 0 0;
+
+  font-family:
+    'Cormorant Garamond',
+    serif;
+
+  font-size: 46px;
+
+  font-weight: 500;
+
+  color: #353236;
+}
+
+.about-content h2 strong {
+  display: block;
+
+  font-weight: 500;
+
+  color: #ec8195;
+}
+
+.about-text {
+  margin:
+    18px 0 0;
+
+  max-width: 560px;
+
+  color: #80767a;
+
+  font-size: 14.5px;
+
+  line-height: 1.85;
+}
+
+.about-text--signature {
+  color: #4a4448;
+
+  font-weight: 500;
+}
+
+
+/* KONTAKT */
+
+.about-contact {
+  width:
+    min(
+      1100px,
+      calc(100% - 60px)
+    );
+
+  margin:
+    90px auto 0;
+
+  padding:
+    55px 60px;
+
+  text-align: center;
+
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fffafb,
+      white
+    );
+
+  box-shadow:
+    0 13px 38px
+    rgba(92, 61, 67, .10);
+}
+
+.about-contact h3 {
+  margin:
+    14px 0 0;
+
+  font-family:
+    'Cormorant Garamond',
+    serif;
+
+  font-size: 34px;
+
+  font-weight: 500;
+
+  color: #3c363a;
+}
+
+.about-contact-description {
+  max-width: 620px;
+
+  margin:
+    18px auto 0;
+
+  color: #877a7f;
+
+  font-size: 13px;
+
+  line-height: 1.8;
+}
+
+.about-contact-links {
+  margin-top: 40px;
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  gap: 20px;
+}
+
+.about-contact-link {
+  width: 260px;
+
+  padding: 22px 24px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  border:
+    1px solid
+    rgba(226, 190, 197, .5);
+
+  border-radius: 14px;
+
+  background: white;
+
+  text-decoration: none;
+
+  transition: .25s;
+}
+
+.about-contact-link svg {
+  width: 24px;
+
+  flex-shrink: 0;
+
+  fill: none;
+
+  stroke: #d9ad62;
+
+  stroke-width: 1.6;
+}
+
+.about-contact-link span {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+
+  text-align: left;
+}
+
+.about-contact-link strong {
+  color: #3c363a;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+.about-contact-link em {
+  color: #877a7f;
+
+  font-size: 12px;
+
+  font-style: normal;
+}
+
+.about-contact-link:hover {
+  border-color: #ec8fa0;
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 12px 26px
+    rgba(226, 105, 129, .14);
+}
+
+
+/* =========================
    BENEFITS
 ========================= */
 
@@ -1238,6 +1494,44 @@ button {
     display: none;
   }
 
+
+  /* O MNIE */
+
+  .about-inner {
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+
+    text-align: center;
+  }
+
+  .about-visual {
+    order: 1;
+  }
+
+  .about-content {
+    order: 2;
+  }
+
+  .about-content .hero-decoration {
+    margin: 0 auto;
+  }
+
+  .about-text {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .about-contact {
+    padding: 45px 30px;
+  }
+
+  .about-contact-link {
+    width: 100%;
+
+    max-width: 340px;
+  }
+
 }
 
 
@@ -1413,6 +1707,43 @@ button {
 
   .benefit {
     min-width: 0;
+  }
+
+
+  /* O MNIE */
+
+  .about {
+    padding: 70px 0 50px;
+  }
+
+  .about-inner {
+    width:
+      calc(100% - 40px);
+  }
+
+  .about-photo {
+    border-radius: 14px;
+  }
+
+  .about-content h2 {
+    font-size: 36px;
+  }
+
+  .about-text {
+    font-size: 13.5px;
+  }
+
+  .about-contact {
+    width:
+      calc(100% - 30px);
+
+    margin-top: 60px;
+
+    padding: 35px 20px;
+  }
+
+  .about-contact h3 {
+    font-size: 26px;
   }
 
 
