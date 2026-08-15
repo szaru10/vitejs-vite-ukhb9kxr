@@ -193,8 +193,8 @@ button {
 .mobile-menu-toggle {
   display: none;
 
-  width: 48px;
-  height: 48px;
+  width: 96px;
+  height: 96px;
 
   align-items: center;
   justify-content: center;
@@ -213,8 +213,8 @@ button {
 }
 
 .mobile-menu-toggle svg {
-  width: 29px;
-  height: 29px;
+  width: 58px;
+  height: 58px;
 
   display: block;
 
@@ -289,8 +289,8 @@ button {
 /* X */
 
 .mobile-nav-close {
-  width: 44px;
-  height: 44px;
+  width: 132px;
+  height: 132px;
 
   align-self: flex-end;
 
@@ -314,8 +314,8 @@ button {
 }
 
 .mobile-nav-close svg {
-  width: 26px;
-  height: 26px;
+  width: 78px;
+  height: 78px;
 
   fill: none;
 
@@ -1270,15 +1270,15 @@ button {
     transform:
       translateY(-50%);
 
-    width: 46px;
+    width: 92px;
 
-    height: 46px;
+    height: 92px;
   }
 
   .mobile-menu-toggle svg {
-    width: 28px;
+    width: 56px;
 
-    height: 28px;
+    height: 56px;
   }
 
 
@@ -1458,15 +1458,15 @@ button {
   }
 
   .mobile-menu-toggle {
-    width: 42px;
+    width: 84px;
 
-    height: 42px;
+    height: 84px;
   }
 
   .mobile-menu-toggle svg {
-    width: 25px;
+    width: 50px;
 
-    height: 25px;
+    height: 50px;
   }
 
   .hero-visual {
