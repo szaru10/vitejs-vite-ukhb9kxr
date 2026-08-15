@@ -38,6 +38,7 @@ const NAV_LINKS = [
   { href: '#home', label: 'STRONA GŁÓWNA' },
   { href: '#about', label: 'O MNIE' },
   { href: '#offer', label: 'OFERTA' },
+  { href: '/galeria', label: 'GALERIA' },
   { href: '#price', label: 'CENNIK' },
   { href: '#contact', label: 'KONTAKT' },
 ]
