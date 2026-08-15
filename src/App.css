@@ -93,7 +93,7 @@ button {
   display: grid;
 
   grid-template-columns:
-    460px 1fr 235px;
+    460px 1fr;
 
   gap: 35px;
 
@@ -363,61 +363,6 @@ button {
 
 .mobile-nav-panel a:last-child {
   border-bottom: none;
-}
-
-
-/* =========================
-   HEADER BUTTON
-========================= */
-
-.header-book {
-  height: 58px;
-
-  border:
-    1px solid #ef94a5;
-
-  border-radius: 9px;
-
-  background:
-    rgba(255, 255, 255, .85);
-
-  color: #e96f87;
-
-  font-weight: 500;
-
-  font-size: 13px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  gap: 12px;
-
-  transition: .25s;
-}
-
-.header-book svg {
-  width: 22px;
-
-  fill: none;
-
-  stroke: currentColor;
-
-  stroke-width: 1.8;
-}
-
-.header-book:hover {
-  background: #ed7890;
-
-  color: white;
-
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 12px 30px
-    rgba(226, 105, 129, .18);
 }
 
 
@@ -954,17 +899,22 @@ button {
 }
 
 
-/* KONTAKT */
+/* =========================
+   KONTAKT
+========================= */
 
-.about-contact {
+.contact {
+  padding: 100px 25px 110px;
+}
+
+.contact-box {
   width:
     min(
       1100px,
       calc(100% - 60px)
     );
 
-  margin:
-    90px auto 0;
+  margin: auto;
 
   padding:
     55px 60px;
@@ -985,7 +935,7 @@ button {
     rgba(92, 61, 67, .10);
 }
 
-.about-contact h3 {
+.contact-box h3 {
   margin:
     14px 0 0;
 
@@ -1000,7 +950,7 @@ button {
   color: #3c363a;
 }
 
-.about-contact-description {
+.contact-box-description {
   max-width: 620px;
 
   margin:
@@ -1013,7 +963,7 @@ button {
   line-height: 1.8;
 }
 
-.about-contact-links {
+.contact-box-links {
   margin-top: 40px;
 
   display: flex;
@@ -1025,7 +975,7 @@ button {
   gap: 20px;
 }
 
-.about-contact-link {
+.contact-box-link {
   width: 260px;
 
   padding: 22px 24px;
@@ -1049,7 +999,7 @@ button {
   transition: .25s;
 }
 
-.about-contact-link svg {
+.contact-box-link svg {
   width: 24px;
 
   flex-shrink: 0;
@@ -1061,7 +1011,7 @@ button {
   stroke-width: 1.6;
 }
 
-.about-contact-link span {
+.contact-box-link span {
   display: flex;
 
   flex-direction: column;
@@ -1071,7 +1021,7 @@ button {
   text-align: left;
 }
 
-.about-contact-link strong {
+.contact-box-link strong {
   color: #3c363a;
 
   font-size: 13px;
@@ -1079,7 +1029,7 @@ button {
   font-weight: 600;
 }
 
-.about-contact-link em {
+.contact-box-link em {
   color: #877a7f;
 
   font-size: 12px;
@@ -1087,7 +1037,7 @@ button {
   font-style: normal;
 }
 
-.about-contact-link:hover {
+.contact-box-link:hover {
   border-color: #ec8fa0;
 
   transform: translateY(-3px);
@@ -1095,6 +1045,496 @@ button {
   box-shadow:
     0 12px 26px
     rgba(226, 105, 129, .14);
+}
+
+
+/* =========================
+   OFERTA (KARTY USŁUG)
+========================= */
+
+.services-offer {
+  position: relative;
+
+  z-index: 2;
+
+  padding: 90px 25px 60px;
+
+  text-align: center;
+}
+
+.services-offer-header .hero-decoration {
+  margin: 0 auto;
+}
+
+.services-offer-header h2 {
+  margin:
+    14px 0 0;
+
+  font-family:
+    'Cormorant Garamond',
+    serif;
+
+  font-size: 46px;
+
+  font-weight: 500;
+
+  color: #353236;
+}
+
+.services-offer-header h2 strong {
+  display: block;
+
+  font-weight: 500;
+
+  color: #ec8195;
+}
+
+.services-offer-intro {
+  max-width: 580px;
+
+  margin:
+    18px auto 0;
+
+  color: #877a7f;
+
+  font-size: 13.5px;
+
+  line-height: 1.8;
+}
+
+.services-offer-grid {
+  width:
+    min(
+      1200px,
+      calc(100% - 20px)
+    );
+
+  margin:
+    55px auto 0;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 26px;
+}
+
+.services-offer-card {
+  padding: 36px 34px;
+
+  text-align: left;
+
+  border-radius: 20px;
+
+  background: white;
+
+  box-shadow:
+    0 13px 38px
+    rgba(92, 61, 67, .08);
+
+  transition: .25s;
+}
+
+.services-offer-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 18px 44px
+    rgba(92, 61, 67, .13);
+}
+
+.services-offer-card h3 {
+  margin: 0;
+
+  font-family:
+    'Cormorant Garamond',
+    serif;
+
+  font-size: 24px;
+
+  font-weight: 500;
+
+  color: #3c363a;
+}
+
+.services-offer-card h3 .price-badge {
+  margin-left: 8px;
+
+  vertical-align: middle;
+}
+
+.services-offer-card p {
+  margin:
+    12px 0 0;
+
+  color: #877a7f;
+
+  font-size: 13px;
+
+  line-height: 1.75;
+}
+
+.services-offer-card-footer {
+  margin-top: 26px;
+
+  padding-top: 22px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 12px;
+
+  border-top:
+    1px solid
+    rgba(226, 190, 197, .4);
+}
+
+.services-offer-card-price {
+  color: #877a7f;
+
+  font-size: 12.5px;
+}
+
+.services-offer-card-price strong {
+  color: #ec8195;
+
+  font-size: 16px;
+
+  font-weight: 600;
+}
+
+.services-offer-card-link {
+  color: #d9ad62;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  white-space: nowrap;
+
+  transition: .2s;
+}
+
+.services-offer-card-link:hover {
+  color: #ec8195;
+}
+
+
+/* =========================
+   CENNIK
+========================= */
+
+.price {
+  position: relative;
+
+  z-index: 2;
+
+  padding: 90px 25px 100px;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fffafb,
+      white
+    );
+}
+
+.price-header .hero-decoration {
+  margin: 0 auto;
+}
+
+.price-header h2 {
+  margin:
+    14px 0 0;
+
+  font-family:
+    'Cormorant Garamond',
+    serif;
+
+  font-size: 46px;
+
+  font-weight: 500;
+
+  color: #353236;
+}
+
+.price-header h2 strong {
+  display: block;
+
+  font-weight: 500;
+
+  color: #ec8195;
+}
+
+.price-intro {
+  max-width: 560px;
+
+  margin:
+    18px auto 0;
+
+  color: #877a7f;
+
+  font-size: 13.5px;
+
+  line-height: 1.8;
+}
+
+
+/* TABELA */
+
+.price-table-wrap {
+  width:
+    min(
+      1000px,
+      calc(100% - 20px)
+    );
+
+  margin:
+    50px auto 0;
+
+  overflow-x: auto;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 13px 38px
+    rgba(92, 61, 67, .10);
+}
+
+.price-table {
+  width: 100%;
+
+  min-width: 620px;
+
+  border-collapse: collapse;
+
+  background: white;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+}
+
+.price-table th,
+.price-table td {
+  padding: 16px 18px;
+
+  text-align: center;
+
+  font-size: 13px;
+
+  white-space: nowrap;
+}
+
+.price-table th {
+  background: #fdf1f3;
+
+  color: #b85f76;
+
+  font-family:
+    'Montserrat',
+    sans-serif;
+
+  font-weight: 600;
+
+  font-size: 11.5px;
+
+  letter-spacing: .4px;
+
+  line-height: 1.4;
+}
+
+.price-table-name {
+  text-align: left !important;
+
+  font-weight: 600;
+
+  color: #3c363a;
+
+  white-space: normal !important;
+}
+
+.price-table tbody tr:nth-child(even) {
+  background: #fffafb;
+}
+
+.price-table tbody td {
+  color: #6b6266;
+
+  border-top:
+    1px solid
+    rgba(226, 190, 197, .35);
+}
+
+.price-badge {
+  display: inline-block;
+
+  margin-left: 6px;
+
+  padding: 2px 8px;
+
+  border-radius: 20px;
+
+  background: #d9ad62;
+
+  color: white;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: .4px;
+
+  text-transform: uppercase;
+
+  vertical-align: middle;
+}
+
+
+/* DODATKI */
+
+.price-extras {
+  width:
+    min(
+      1000px,
+      calc(100% - 20px)
+    );
+
+  margin:
+    22px auto 0;
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  gap: 10px 28px;
+
+  color: #877a7f;
+
+  font-size: 12.5px;
+}
+
+.price-extra strong {
+  color: #4a4448;
+}
+
+.price-extra--note {
+  font-style: italic;
+}
+
+
+/* USTA / HIALURONIDAZA */
+
+.price-secondary {
+  width:
+    min(
+      1000px,
+      calc(100% - 20px)
+    );
+
+  margin:
+    55px auto 0;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 28px;
+}
+
+.price-card {
+  padding: 32px 30px;
+
+  text-align: left;
+
+  border-radius: 18px;
+
+  background: white;
+
+  box-shadow:
+    0 13px 38px
+    rgba(92, 61, 67, .08);
+}
+
+.price-card-label {
+  margin: 0;
+
+  color: #df768a;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  letter-spacing: 1.5px;
+}
+
+.price-card-list {
+  margin:
+    18px 0 0;
+
+  padding: 0;
+
+  list-style: none;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 14px;
+}
+
+.price-card-list li {
+  display: flex;
+
+  align-items: baseline;
+
+  justify-content: space-between;
+
+  gap: 12px;
+
+  padding-bottom: 14px;
+
+  border-bottom:
+    1px solid
+    rgba(226, 190, 197, .4);
+
+  font-size: 13.5px;
+
+  color: #4a4448;
+}
+
+.price-card-list li:last-child {
+  border-bottom: none;
+
+  padding-bottom: 0;
+}
+
+.price-card-list strong {
+  flex-shrink: 0;
+
+  color: #ec8195;
+
+  font-size: 15px;
+
+  font-weight: 600;
+}
+
+
+/* CTA */
+
+.price-cta {
+  margin-top: 55px;
 }
 
 
@@ -1345,7 +1785,7 @@ button {
 
   .header-inner {
     grid-template-columns:
-      360px 1fr 200px;
+      360px 1fr;
   }
 
   .brand {
@@ -1388,8 +1828,13 @@ button {
 
     min-height: 115px;
 
-    grid-template-columns:
-      55px 1fr auto;
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
 
     gap: 15px;
 
@@ -1399,6 +1844,15 @@ button {
 
   .mobile-menu-toggle {
     display: flex;
+
+    position: absolute;
+
+    left: 0;
+
+    top: 50%;
+
+    transform:
+      translateY(-50%);
   }
 
   .nav {
@@ -1409,18 +1863,12 @@ button {
     width: 300px;
 
     max-width: 100%;
-
-    justify-self: center;
   }
 
   .brand img {
     max-height: 110px;
 
     transform: none !important;
-  }
-
-  .header-book {
-    min-width: 190px;
   }
 
 
@@ -1522,14 +1970,43 @@ button {
     margin-right: auto;
   }
 
-  .about-contact {
+  .contact-box {
     padding: 45px 30px;
   }
 
-  .about-contact-link {
+  .contact-box-link {
     width: 100%;
 
     max-width: 340px;
+  }
+
+
+  /* KONTAKT */
+
+  .contact {
+    padding: 70px 25px 80px;
+  }
+
+
+  /* OFERTA */
+
+  .services-offer {
+    padding: 60px 20px 40px;
+  }
+
+  .services-offer-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  /* CENNIK */
+
+  .price {
+    padding: 60px 20px 70px;
+  }
+
+  .price-secondary {
+    grid-template-columns: 1fr;
   }
 
 }
@@ -1604,13 +2081,6 @@ button {
     max-height: 100px;
 
     transform: none !important;
-  }
-
-
-  /* BUTTON HEADER */
-
-  .header-book {
-    display: none;
   }
 
 
@@ -1733,17 +2203,52 @@ button {
     font-size: 13.5px;
   }
 
-  .about-contact {
+  .contact-box {
     width:
       calc(100% - 30px);
-
-    margin-top: 60px;
 
     padding: 35px 20px;
   }
 
-  .about-contact h3 {
+  .contact-box h3 {
     font-size: 26px;
+  }
+
+
+  /* KONTAKT */
+
+  .contact {
+    padding: 55px 15px 65px;
+  }
+
+
+  /* OFERTA */
+
+  .services-offer {
+    padding: 45px 15px 30px;
+  }
+
+  .services-offer-header h2 {
+    font-size: 34px;
+  }
+
+  .services-offer-card {
+    padding: 26px 22px;
+  }
+
+
+  /* CENNIK */
+
+  .price {
+    padding: 45px 15px 55px;
+  }
+
+  .price-header h2 {
+    font-size: 34px;
+  }
+
+  .price-card {
+    padding: 26px 22px;
   }
 
 
