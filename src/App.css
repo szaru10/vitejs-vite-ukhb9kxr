@@ -289,8 +289,8 @@ button {
 /* X */
 
 .mobile-nav-close {
-  width: 132px;
-  height: 132px;
+  width: 90px;
+  height: 90px;
 
   align-self: flex-end;
 
@@ -309,6 +309,10 @@ button {
   background: transparent;
 
   color: #877a7f;
+
+  font-size: 63px;
+
+  line-height: 1;
 
   cursor: pointer;
 }
