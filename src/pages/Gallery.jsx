@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import './Gallery.css'
 
@@ -21,7 +21,7 @@ import lips02 from '../assets/gallery/lips-02.webp'
 import lips03 from '../assets/gallery/lips-03.webp'
 import lips04 from '../assets/gallery/lips-04.webp'
 
-import { CalendarIcon, HeartIcon } from '../components/Icons.jsx'
+import { HeartIcon } from '../components/Icons.jsx'
 
 const GALLERY_ITEMS = [
   {
@@ -113,7 +113,6 @@ const NAV_LINKS = [
 ]
 
 function Gallery() {
-  const navigate = useNavigate()
   const [activeCategory, setActiveCategory] = useState('lashes')
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [isLightboxOpen, setIsLightboxOpen] = useState(false)
@@ -209,14 +208,6 @@ function Gallery() {
               </a>
             ))}
 
-            <button
-              type="button"
-              className="gallery-mobile-book"
-              onClick={() => navigate('/rezerwacja')}
-            >
-              <CalendarIcon />
-              UMÓW WIZYTĘ
-            </button>
           </div>
         </div>
       )}
